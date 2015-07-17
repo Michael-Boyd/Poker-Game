@@ -50,6 +50,7 @@ static HashMap<Integer, Integer> cardRankCounter = new HashMap<Integer, Integer>
 
                 printValues.add(new Integer[]{entry.getKey(),entry.getValue()});
 //                System.out.println(entry.getKey() + " : " + entry.getValue());
+
             }
 
 

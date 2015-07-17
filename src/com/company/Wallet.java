@@ -7,12 +7,29 @@ import java.util.Random;
  */
 public class Wallet {
 
+    private double balance = new Random().nextInt(50000 - 40000 + 1) + 40000;;
     public double amountInWallet() {
 
 
     Random random = new Random();
     double walletAmount = random.nextInt(50000 - 40000 + 1) + 40000;
-
+    balance = walletAmount;
     return walletAmount;
+
+
 }
+    public void subtractFromWallet(double betAmount){
+        balance = balance - betAmount;
+    }
+    public void addToWallet(double moneyOnTheTable){
+        balance = balance + moneyOnTheTable;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
 }
