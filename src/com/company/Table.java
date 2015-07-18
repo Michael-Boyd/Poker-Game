@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.CardComparator.SortCards;
 import com.company.Decks.Card;
 import com.company.Decks.Deck;
 
@@ -70,6 +71,7 @@ public class Table {
 
         for (Player player : players) {
             ArrayList<Card> currentHand = player.getHand().getHandOfCards();
+            Collections.sort(currentHand, new CardComparator.SortCards());
 //            int size = currentHand.size();
 //            for (int i = 0; i <size; i++) {
 //                Card currentCard = currentHand.get(i);
@@ -95,6 +97,12 @@ public class Table {
 
             }
             currentHand.clear();
+        }
+    }
+
+    public void clearUpIntegerArray(){
+        for(Player player:players){
+            player.getHand().getUpdatedHands().clear();
         }
     }
 
@@ -129,6 +137,7 @@ public class Table {
         }
         System.out.println("The winner is Player ");
         System.out.println(winner.getPlayerNumber());
+        System.out.println("With a rank of " +winner.getHand().getCardRank());
         cardHandler.cardComparison(winner.hand.getHandOfCards());
         winner.getWallet().addToWallet(moneyOnTheTable);
         moneyOnTheTable = 0;
@@ -137,9 +146,13 @@ public class Table {
 
     public boolean compareCardsWithinHands(Player winner, Player challenger) {
         for (int i = 4; i >= 0; i--) {
-            if (winner.getHand().getHandOfCards().get(i).getRankValue() > challenger.getHand().getHandOfCards().get(i).getRankValue()) {
+            if (winner.getHand().getHandOfCards().get(i).getRankValue() ==
+                    challenger.getHand().getHandOfCards().get(i).getRankValue()){
+                continue;
+            } else if (winner.getHand().getHandOfCards().get(i).getRankValue()
+                    > challenger.getHand().getHandOfCards().get(i).getRankValue()) {
                 return false;
-            } else if (winner.getHand().getHandOfCards().get(i).getRankValue() < challenger.getHand().getHandOfCards().get(i).getRankValue()) {
+            } else {
                 return true;
             }
         }

@@ -11,9 +11,9 @@ public class Game {
 
     public void startGame() {
         table.addPlayer();
-        System.out.println("Do you want to play again? yes/no");
+//        System.out.println("Do you want to play again? yes/no");
         Scanner in = new Scanner(System.in);
-        String yesNo = in.nextLine();
+        String yesNo = "yes";
         table.makeBet();
          while (yesNo.equalsIgnoreCase("yes")){
 
@@ -26,6 +26,7 @@ public class Game {
             // you didn't print out the balance again...
 
             table.putHandBackInDeck();
+             table.clearUpIntegerArray();
              System.out.println("Do you want to play again? yes/no");
              yesNo = in.nextLine();
         }

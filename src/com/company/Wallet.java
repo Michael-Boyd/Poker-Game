@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class Wallet {
 
-    private double balance = new Random().nextInt(50000 - 40000 + 1) + 40000;;
+    private double balance = 5000;
     public double amountInWallet() {
 
 
